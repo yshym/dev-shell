@@ -1,5 +1,6 @@
 { pkgs ? import (fetchTarball
-  "https://github.com/yevhenshymotiuk/nixpkgs/archive/master.tar.gz") { } }:
+  "https://github.com/yevhenshymotiuk/nixpkgs/archive/nixpkgs-unstable.tar.gz")
+  { } }:
 
 with pkgs;
 mkShell {

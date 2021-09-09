@@ -14,4 +14,7 @@ if [[ ! -e "$NIX_CONF" ]]; then
 fi
 echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 
-nix-shell https://github.com/yevhenshymotiuk/dev-shell/blob/master/shell.nix
+# download shell file
+curl -Ls https://github.com/yevhenshymotiuk/dev-shell/raw/master/shell.nix > shell.nix
+# start shell
+nix-shell
