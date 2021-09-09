@@ -3,18 +3,17 @@
 # install nix
 if ! command -v nix &> /dev/null; then
     sh <(curl -Ls https://nixos.org/nix/install) --daemon
-    nix-env -iA nixpkgs.nixFlakes
 fi
 
-# explicitly enable flakes
-NIX_CONF=~/.config/nix/nix.conf
-if [[ ! -e "$NIX_CONF" ]]; then
-    mkdir -p ~/.config/nix
-    touch ~/.config/nix/nix.conf
-fi
-echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
-
-# download shell file
-curl -Ls https://github.com/yevhenshymotiuk/dev-shell/raw/master/shell.nix > shell.nix
+# process substitution can not be used to start nix shell
+# because of https://github.com/NixOS/nix/issues/2734, so
+# temporary file should be created to store content of the
+# shell.nix file
+TEMP_SHELL_FILE="$(mktemp)"
+# download content of the shell file
+curl -Ls https://github.com/yevhenshymotiuk/dev-shell/raw/master/shell.nix \
+    > "$TEMP_SHELL_FILE"
 # start shell
-nix-shell
+nix-shell "$TEMP_SHELL_FILE"
+# remove temporary shell file
+rm "$TEMP_SHELL_FILE"
