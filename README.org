@@ -1,1 +1,16 @@
 #+TITLE: dev-shell
+
+* Table of contents :TOC_2:
+- [[#usage][Usage]]
+  - [[#start-shell][Start shell]]
+
+* Usage
+** Start shell
+The following command will:
+- install ~nix~ package manager
+- download ~shell.nix~ file
+- run ~nix-shell~
+
+#+BEGIN_SRC shell
+bash <(curl -Ls https://github.com/yevhenshymotiuk/dev-shell/raw/master/init.sh)
+#+END_SRC
