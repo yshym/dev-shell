@@ -4,9 +4,11 @@
 
 with pkgs;
 mkShell {
-  buildInputs = [ cowsay ];
+  buildInputs = [ bat exa ripgrep ];
 
   shellHook = ''
-    echo "Hi. Welcome to the dev shell!"
+    alias cat="bat --style plain"
+    alias grep="rg"
+    alias ls="exa --group-directories-first"
   '';
 }
