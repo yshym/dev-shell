@@ -2,7 +2,7 @@
 
 # install nix
 if ! command -v nix &> /dev/null; then
-    sh <(curl -L https://nixos.org/nix/install) --daemon
+    sh <(curl -Ls https://nixos.org/nix/install) --daemon
     nix-env -iA nixpkgs.nixFlakes
 fi
 
