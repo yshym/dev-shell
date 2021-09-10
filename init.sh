@@ -2,7 +2,7 @@
 
 # install nix
 if ! command -v nix &> /dev/null; then
-    sh <(curl -Ls https://nixos.org/nix/install) --daemon
+    yes | sh <(curl -Ls https://nixos.org/nix/install) --daemon
 fi
 
 # process substitution can not be used to start nix shell
