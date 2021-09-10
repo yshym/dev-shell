@@ -23,7 +23,7 @@ nix develop github:yevhenshymotiuk/dev-shell
 
 # remove nix if existed
 test $NIX_EXISTS -eq 0 \
-    && rm -rf \
+    && sudo rm -rf \
         /etc/profile/nix.sh \
         /etc/nix \
         /nix ~root/.nix-profile \
@@ -32,3 +32,4 @@ test $NIX_EXISTS -eq 0 \
         ~/.nix-profile \
         ~/.nix-defexpr \
         ~/.nix-channels \
+        ~/.config/nix
