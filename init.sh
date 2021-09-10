@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # install nix or source shell environment
-NIX_SH_FILE="$HOME/.nix-profile/etc/profile.d/nix.sh"
+NIX_PROFILE_DIR="$HOME/.nix-profile"
+NIX_SH_FILE="$NIX_PROFILE_DIR/etc/profile.d/nix.sh"
 NIX_EXISTS=1
-if [[ ! -e "$NIX_SH_FILE" ]]; then
+if [[ ! -e "$NIX_PROFILE_DIR" ]]; then
     NIX_EXISTS=0
     sh <(curl -Ls https://nixos.org/nix/install)
 fi
-source "$NIX_SH_FILE"
+test -e "$NIX_SH_FILE" && source "$NIX_SH_FILE"
 ! command nix flake --version &> /dev/null && nix-env -iA nixpkgs.nixFlakes
 
 if ! command cachix --version &> /dev/null; then
