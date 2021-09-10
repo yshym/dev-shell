@@ -10,6 +10,11 @@ fi
 source "$NIX_SH_FILE"
 ! command nix flake --version &> /dev/null && nix-env -iA nixpkgs.nixFlakes
 
+if ! command cachix --version &> /dev/null; then
+    nix-env -iA nixpkgs.cachix
+    cachix use yevhenshymotiuk
+fi
+
 # explicitly enable flakes
 NIX_CONF_FILE="$HOME/.config/nix/nix.conf"
 if [[ ! -e "$NIX_CONF_FILE" ]]; then
