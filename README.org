@@ -7,9 +7,8 @@
 * Usage
 ** Start shell
 The following command will:
-- install ~nix~ package manager
-- download ~shell.nix~ file
-- run ~nix-shell~
+- install ~nixFlakes~ version of ~nix~ package manager
+- run ~nix develop~
 
 #+BEGIN_SRC shell
 bash <(curl -Ls https://github.com/yevhenshymotiuk/dev-shell/raw/master/init.sh)
