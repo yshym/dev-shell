@@ -31,9 +31,7 @@ test $NIX_EXISTS -eq 0 \
     && sudo rm -rf \
         /etc/profile/nix.sh \
         /etc/nix \
-        /nix ~root/.nix-profile \
-        ~root/.nix-defexpr \
-        ~root/.nix-channels \
+        /nix \
         ~/.nix-profile \
         ~/.nix-defexpr \
         ~/.nix-channels \
