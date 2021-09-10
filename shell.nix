@@ -33,7 +33,7 @@ let
     };
   };
 in mkShell {
-  buildInputs = [ bat exa ripgrep myVim ];
+  buildInputs = [ bat exa gdb ripgrep myVim ];
 
   shellHook = ''
     alias cat="bat --style plain"
