@@ -1,5 +1,9 @@
 #+TITLE: dev-shell
 
+#+BEGIN_QUOTE
+Run nix shell on a system without nix
+#+END_QUOTE
+
 * Table of contents :TOC_2:
 - [[#usage][Usage]]
   - [[#start-shell][Start shell]]
@@ -7,8 +11,9 @@
 * Usage
 ** Start shell
 The following command will:
-- install ~nixFlakes~ version of ~nix~ package manager
+- install ~nix~ and required packages
 - run ~nix develop~
+- remove ~nix~ and installed packages
 
 #+BEGIN_SRC shell
 bash <(curl -Ls https://github.com/yevhenshymotiuk/dev-shell/raw/master/init.sh)
