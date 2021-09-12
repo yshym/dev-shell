@@ -2,8 +2,9 @@
 
 let
   config = builtins.fetchTarball {
-    url = "https://github.com/yevhenshymotiuk/nix-config/archive/master.tar.gz";
-    sha256 = "0bs8g7ihj75jn0biay9bcsmb1wsby8cmifhpwm41laxykc5qczp8";
+    url =
+      "https://github.com/yevhenshymotiuk/nix-config/archive/2a7165f62f81c59bbe46990380344d68a5b787a3.tar.gz";
+    sha256 = "1fmq50k1svc36vw9imd0770q9n07k3kn6k45b339cfghwn36f1cx";
   };
   myVim = (import "${config}/home/programs/my-vim.nix" { inherit pkgs; }).pkg;
 in with pkgs;
