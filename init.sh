@@ -25,14 +25,20 @@ if [[ ! -e "$NIX_CONF_FILE" ]]; then
 fi
 echo "experimental-features = nix-command flakes" > "$NIX_CONF_FILE"
 
+CACHIX_EXISTS=1
 # install cachix if not exists
 if ! command cachix --version &> /dev/null; then
+    CACHIX_EXISTS=0
     nix-env -iA nixpkgs.cachix
     cachix use yevhenshymotiuk
 fi
 
 # start dev shell
 nix develop github:yevhenshymotiuk/dev-shell
+
+# remove cachix if not existed
+test $NIX_EXISTS -eq 1 && $CACHIX_EXISTS -eq 0 \
+    && nix-env -e cachix
 
 # replace flakes back if the stable version of nix was installed
 test $NIX_EXISTS -eq 1 && test $NIX_FLAKES_EXISTS -eq 0 \
