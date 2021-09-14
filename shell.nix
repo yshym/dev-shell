@@ -3,10 +3,17 @@
 let
   config = builtins.fetchTarball {
     url =
-      "https://github.com/yevhenshymotiuk/nix-config/archive/26a6aad310a8c1d63c9d8a914f389a14d67530b3.tar.gz";
-    sha256 = "1wyl4i95jynkgbz9wiwh8ls5hv5165k98i1gagw0j27kfk97q1f0";
+      "https://github.com/yevhenshymotiuk/nix-config/archive/f2b7f22991b898766aa3d804123e118acc0a7d70.tar.gz";
+    sha256 = "1lfai35j2k1v1vfnpvwl94m8rdmq34zkbvshfvkwmq079hg9031m";
   };
-  myVim = (import "${config}/home/programs/my-vim.nix" { inherit pkgs; }).pkg;
+  vimConfig = (import "${config}/home/programs/vim.nix" { inherit pkgs; config={}; }).programs.vim;
+  myVim = pkgs.vim_configurable.customize {
+    name = "vim";
+    vimrcConfig = {
+      packages.myVimPackage.start = vimConfig.plugins;
+      customRC = vimConfig.extraConfig;
+    };
+  };
 in with pkgs;
 mkShell {
   buildInputs = [ bat exa gdb myVim ripgrep ];
